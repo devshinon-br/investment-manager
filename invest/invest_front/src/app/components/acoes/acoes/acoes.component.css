@@ -1,0 +1,50 @@
+.acoes{
+  height: 100%;
+  align-items: flex-start !important;
+  margin-top: 50px !important;
+}
+
+.acoes-box {
+  position: relative;
+  opacity: 1;
+  float: left;
+  padding: 60px 50px 40px 50px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 400px;
+}
+
+.acoes .table-acoes{
+  min-width: 100%;
+  max-width: 400px;
+  width: 100%;
+}
+.acoes-box.back {
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+  -ms-transform: scale(.95);
+  top: -20px;
+  opacity: .8;
+  z-index: -1;
+}
+
+.acoes mat-card-header {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 700;
+}
+
+.acoes mat-card-header mat-card-title {
+  font-size: 30px;
+  margin: 0;
+}
+
+.acoes .mat-card {
+  padding: 40px 70px 50px;
+}

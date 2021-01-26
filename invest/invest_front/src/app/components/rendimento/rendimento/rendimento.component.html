@@ -1,0 +1,127 @@
+<div fxLayoutAlign="row">
+  <div class="rendimento" fxFlex.gt-md>
+    <mat-card class="rendimento-box">
+      <mat-card-header>
+        <mat-card-title>Rendimento</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div>
+          <form [formGroup]="formDatasFiltro">
+            <mat-form-field class="space">
+              <mat-label>Data de Início:</mat-label>
+              <input matInput
+                     [formControl]="dataInicioFormControl"
+                     placeholder="Informe a data de início!"
+                     [matDatepicker]="pickerInicio"
+                     name="dataInicio"
+              >
+              <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+              <mat-datepicker #pickerInicio></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="space">
+              <mat-label>Data de Término:</mat-label>
+              <input matInput
+                     [formControl]="dataFimFormControl"
+                     placeholder="Informe a data de término!"
+                     [matDatepicker]="pickerFim"
+                     name="dataFim"
+              >
+              <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+              <mat-datepicker #pickerFim></mat-datepicker>
+            </mat-form-field>
+            <button
+              mat-raised-button
+              (click) = "filtrar()"
+              class="btn-block space"
+              color="primary">
+              Filtrar por Data
+            </button>
+          </form>
+        </div>
+
+        <div>
+          <table mat-table class="table-rendimento" [dataSource]="dataSourceRend">
+            <!--Coluna Quantidade-->
+            <ng-container matColumnDef="quantidade">
+              <th mat-header-cell *matHeaderCellDef>Quantidade de ações</th>
+              <td mat-cell *matCellDef="let elementRend">{{elementRend.quantidade}}</td>
+            </ng-container>
+
+            <!--Coluna Valor Total acoes-->
+            <ng-container matColumnDef="valor_total_acoes">
+              <th mat-header-cell *matHeaderCellDef>Valor Total</th>
+              <td mat-cell *matCellDef="let elementRend">{{elementRend.valor_total_acoes}}</td>
+            </ng-container>
+
+            <!--Coluna Rendimento-->
+            <ng-container matColumnDef="rendimento_dinheiro">
+              <th mat-header-cell *matHeaderCellDef>Rendimento R$</th>
+              <td mat-cell *matCellDef="let elementRend">{{elementRend.rendimento_dinheiro}}</td>
+            </ng-container>
+
+            <!--Coluna Rendimento-->
+            <ng-container matColumnDef="rendimento_porcentagem">
+              <th mat-header-cell *matHeaderCellDef>Rendimento %</th>
+              <td mat-cell *matCellDef="let elementRend">{{elementRend.rendimento_porcentagem}}</td>
+            </ng-container>
+
+            <!--Coluna Data-->
+            <ng-container matColumnDef="data">
+              <th mat-header-cell *matHeaderCellDef>Data</th>
+              <td mat-cell *matCellDef="let elementRend">{{elementRend.data}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsRend"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsRend;"></tr>
+          </table>
+          <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10]">
+          </mat-paginator>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+
+    <div class="informacoes" fxFlex.gt-md>
+      <mat-card class="informacoes-box">
+        <mat-card-header>
+          <mat-card-title>Ações</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div>
+            <table class="table-infos" mat-table [dataSource]="dataSourceInfo">
+
+
+              <ng-container matColumnDef="instrumentInfo">
+                <th mat-header-cell *matHeaderCellDef>Descrição</th>
+                <td mat-cell *matCellDef="let element">{{element.instrumentInfo}}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="quantidadeInfo">
+                <th mat-header-cell  *matHeaderCellDef>Quantidade</th>
+                <td mat-cell *matCellDef="let element">{{element.quantidadeInfo}}</td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsInfo"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsInfo;"></tr>
+            </table>
+            <mat-paginator showFirstLastButtons [pageSizeOptions]="[5,10]" >
+            </mat-paginator>
+          </div>
+
+          <mat-label>Total de ações: {{total}}</mat-label>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
+
+

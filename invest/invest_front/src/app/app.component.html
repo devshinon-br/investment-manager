@@ -1,0 +1,57 @@
+<div class="app">
+  <div class="flex-container" fxLayout="row">
+    <mat-toolbar color="primary">
+
+      <a routerLink="/home"
+         mat-button>
+        <h2>ZgInvest</h2>
+      </a>
+
+      <a routerLink="/acoes" mat-button *ngIf="existeUsuarioAutenticado()">
+        Banco de ações
+      </a>
+
+      <a routerLink="/carteira" mat-button *ngIf="existeUsuarioAutenticado()">
+        Carteira do Investidor
+      </a>
+
+      <a routerLink="/rendimento" mat-button *ngIf="existeUsuarioAutenticado()">
+        Rendimento
+      </a>
+
+      <span class="app-spacer"></span>
+      <div *ngIf="existeUsuarioAutenticado()">
+        <a class="wellCome">
+          Bem Vindo Investidor(a) {{nomeUsuarioLogado()}}!
+        </a>
+      </div>
+      <div>
+        <a
+          *ngIf="!existeUsuarioAutenticado()"
+          routerLink="/login"
+          mat-button>
+          Log in
+        </a>
+        <a
+          *ngIf="!existeUsuarioAutenticado()"
+          routerLink="/cadastro"
+          mat-button>
+          Cadastrar-se
+        </a>
+        <a
+          *ngIf="existeUsuarioAutenticado()"
+          routerLink="/"
+          (click)="realizarLogout()"
+          mat-button>
+          <mat-icon>login</mat-icon>
+          Sair
+        </a>
+
+      </div>
+
+    </mat-toolbar>
+  </div>
+  <div fxFlexFill>
+    <router-outlet></router-outlet>
+  </div>
+</div>
