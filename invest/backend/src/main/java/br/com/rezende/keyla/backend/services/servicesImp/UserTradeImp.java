@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserTradeImp implements UserTradeService {
@@ -27,5 +28,10 @@ public class UserTradeImp implements UserTradeService {
     @Override
     public UserTrade save(UserTrade userTrade){
         return userTradeRepository.save(userTrade);
+    }
+
+    @Override
+    public List<UserTrade> findByInstrument(String instrument){
+        return userTradeRepository.findByInstrument(instrument);
     }
 }

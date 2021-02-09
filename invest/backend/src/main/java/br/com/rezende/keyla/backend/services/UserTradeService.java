@@ -10,4 +10,6 @@ public interface UserTradeService {
     UserTrade findById(Long id);
 
     UserTrade save(UserTrade userTrade);
+
+    List<UserTrade> findByInstrument(String instrument);
 }
