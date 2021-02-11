@@ -28,4 +28,7 @@ public class InstrumentQuoteImp implements InstrumentQuoteService {
     public InstrumentQuote save( InstrumentQuote instrumentQuote){
         return instrumentQuoteRepository.save(instrumentQuote);
     }
+
+    @Override
+    public List<InstrumentQuote> findBySimbol(String simbol){return instrumentQuoteRepository.findBySimbol(simbol);}
 }

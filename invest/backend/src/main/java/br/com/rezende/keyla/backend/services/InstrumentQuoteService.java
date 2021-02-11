@@ -9,4 +9,6 @@ public interface InstrumentQuoteService {
     InstrumentQuote findById(Long id);
 
     InstrumentQuote save( InstrumentQuote instrumentQuote);
+
+    List<InstrumentQuote> findBySimbol(String simbol);
 }
